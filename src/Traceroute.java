@@ -30,9 +30,9 @@ class Traceroute
                 System.out.println("could not connect");
 
             while((line=in.readLine())!=null){
-                if (line.contains("*") || !line.contains("ms")) break;
                 String[] trace = line.split(" ");
                 String ip = trace[trace.length - 1];
+                if (!line.contains("ms") ||  !Character.isDigit(ip.charAt(0)) ) break;
                 readJSON(Integer.toString(count), ip);
                 count++;
                 //in.close();
